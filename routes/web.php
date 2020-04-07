@@ -24,3 +24,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/myaccount/{username}', 'customerAccount@show')->name('customerAccount');
+Route::get('/order', 'orderController@index')->name('order');
+Route::get('/addtocart/{id}', 'cartController@add')->name('cart');
+
+Route::get('/viewcart/{id}', 'cartController@show')->name('cart');
+//Route::get('/payment/{id}', 'paymentsController@mpesa')->name('pay');
+Route::get('/payment', 'paymentsController@create')->name('pay');
+Route::post('/submitpayment', 'paymentsController@pay')->name('pay1');

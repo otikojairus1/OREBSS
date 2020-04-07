@@ -51,7 +51,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                  <span class="mr-2">Welcome, </span>     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -76,5 +76,7 @@
             @yield('content')
         </main>
     </div>
+
+    <script src="https://kit.fontawesome.com/02bf4b4086.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+use App\Bill;
+use App\cart;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -50,7 +53,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -63,11 +66,34 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
+    {   //create all required model instances
+        
+        $newcart = new cart();
+        $newcart->user_id = '0';
+        $newcart->username = $data['name'];
+        $newcart->price = 0;
+        $newcart->description = 'default';
+        $newcart->foodId = 0;
+        $newcart->foodOrdered = 'foodname';
+        $newcart->save();
+
+
+        
+        $newBill = new Bill();
+        $newBill->userid = '0';
+        $newBill->price = 0;
+        $newBill->save();
+
+
+
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+
+
     }
 }
