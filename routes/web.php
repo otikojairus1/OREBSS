@@ -25,8 +25,19 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/myaccount/{username}', 'customerAccount@show')->name('customerAccount');
-Route::get('/order', 'orderController@index')->name('order');
-Route::get('/addtocart/{id}', 'cartController@add')->name('cart');
+//Route::get('/order', 'orderController@index')->name('order');
+
+// *****************************ROUTE FOR MANAGING MENUS**********************************************/
+Route::get('/menu', 'menuController@index')->name('menu');
+Route::get('/menu/create', 'menuController@create')->name('menu.create');
+Route::post('/addmenu', 'menuController@store')->name('menu.store');
+Route::get('/menu/{id}', 'menuController@show')->name('menu.show');
+Route::get('/menuedit', 'menuController@editpage')->name('menu.editpage');
+
+//**************************************ROUTES FOR MANAGING THE CART************************************************ */
+Route::post('/addtocart', 'cartController@add')->name('cart');
+
+
 
 Route::get('/viewcart/{id}', 'cartController@show')->name('cart');
 //Route::get('/payment/{id}', 'paymentsController@mpesa')->name('pay');

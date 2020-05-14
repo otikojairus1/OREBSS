@@ -28,7 +28,7 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email">
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" disabled name="email" value="{{ old('email') }}"  autocomplete="email">
     
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -42,7 +42,7 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">AMOUNT</label>
     
                                 <div class="col-md-6">
-                                    <input id="password" type="number" placeholder="amount between 1 - 70,000"class="form-control @error('password') is-invalid @enderror" name="amount"  autocomplete="new-password">
+                                    <input id="password" type="number" disabled placeholder="amount between 1 - 70,000"class="form-control @error('password') is-invalid @enderror" name="amount"  autocomplete="new-password">
     
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">

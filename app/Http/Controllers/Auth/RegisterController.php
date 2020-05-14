@@ -68,21 +68,21 @@ class RegisterController extends Controller
     protected function create(array $data)
     {   //create all required model instances
         
-        $newcart = new cart();
-        $newcart->user_id = '0';
-        $newcart->username = $data['name'];
-        $newcart->price = 0;
-        $newcart->description = 'default';
-        $newcart->foodId = 0;
-        $newcart->foodOrdered = 'foodname';
-        $newcart->save();
+        // $newcart = new cart();
+        // $newcart->user_id = '0';
+        // $newcart->username = $data['name'];
+        // $newcart->price = 0;
+        // $newcart->description = 'default';
+        // $newcart->foodId = 0;
+        // $newcart->foodOrdered = 'foodname';
+        // $newcart->save();
 
 
         
-        $newBill = new Bill();
-        $newBill->userid = '0';
-        $newBill->price = 0;
-        $newBill->save();
+        // $newBill = new Bill();
+        // $newBill->userid = '0';
+        // $newBill->price = 0;
+        // $newBill->save();
 
 
 

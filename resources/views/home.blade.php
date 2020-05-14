@@ -11,9 +11,9 @@
         </button>
         <button type="button" class="list-group-item list-group-item-action"> NAME: {{$loggedUser->name}}</button>
         <button type="button" class="list-group-item list-group-item-action">EMAIL ADRESS: {{$loggedUser->email}}</button>
-        <button type="button" class="list-group-item list-group-item-action">PAYMENT MODE</button>
-        <button type="button" class="list-group-item list-group-item-action">PLAN</button>
-        <button type="button" class="list-group-item list-group-item-action">ACCOUNT BALANCE</button>
+        <button type="button" class="list-group-item list-group-item-action">PAYMENT MODE: MPESA</button>
+        <button type="button" class="list-group-item list-group-item-action">PLAN: BASIC</button>
+        <button type="button" class="list-group-item list-group-item-action">ACCOUNT BALANCE: KES NULL</button>
       </div>
     </div>
     <div class="col-md-9">
@@ -31,12 +31,13 @@
               <div class="card-body">
                 <h5 class="card-title">Check Out Our Menu</h5>
                 <p class="card-text">Be the first to make an order on our todays menu</p>
-                <a href="/order" class="btn btn-primary">ORDER NOW</a>
+                <a href="/menu" class="btn btn-primary">ORDER NOW</a>
               </div>
             
             </div>
 
           </div>
+
           
           <div class="col-md-6">
             <div class="card text-center">
@@ -83,6 +84,27 @@
             </div>
         
           </div>
+        </div>
+
+        
+        <div class="col-md-12 my-3">
+          <div class="card text-center">
+            
+            <div class="card-body">
+              <h5 class="card-title">UPDATE CLIENT'S MENU</h5>
+              <p class="card-text">CAUTION: Adding dishes to the menu list will be shifted to LIVEMODE. 
+                This means that customers are seeing the dishes and can start making orders immediately,
+                for customer convinience please make sure that the food you add is confirmed by the head cook and exists 
+                in the kitchen.
+              </p>
+              <a href="/menu/create" class="btn btn-primary">ADD FOOD</a>
+              <a href="/menuedit" class="btn btn-primary">EDIT MENU</a>
+              <a href="/menu/delete" class="btn btn-primary">DELETE MENU</a>
+            
+            </div>
+          
+          </div>
+
         </div>
     </div>
     </div>

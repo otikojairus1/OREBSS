@@ -68,12 +68,12 @@ class paymentsController extends Controller
           'Password' => $password,
           'Timestamp' => $timestamp,
           'TransactionType' => 'CustomerPayBillOnline',
-          'Amount' => 6,
+          'Amount' => 1,
           'PartyA' => $partyA,
           'PartyB' => $partyB,
-          'PhoneNumber' => $phoneNumber,
+          'PhoneNumber' => '254796640399',
           'CallBackURL' => 'https://orebscafe.com/mpesacallback',
-          'AccountReference' => 'MYIDNUMBER12',
+          'AccountReference' => 'OREBS',
           'TransactionDesc' => 'PAYING BILLS FOR OREBS'
         );
         
