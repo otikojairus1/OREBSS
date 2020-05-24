@@ -8,10 +8,10 @@
             <div class="card">
                 <div class="card-header">ADD TODAY'S MENU</div>
 
-                @if($status ?? "")
-
-                    <div class="alert alert-success">Menu added successfully!!!</div>
-
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        Food added to Today's menu successfully!
+                    </div>
                 @endif
 
                 <div class="card-body">
@@ -73,6 +73,8 @@
                                 <button type="submit" class="btn btn-primary">
                                     SAVE CHANGES
                                 </button>
+
+                                <a href="/menu" class="btn btn-primary">VIEW MENU</a>
                             </div>
                         </div>
                     </form>

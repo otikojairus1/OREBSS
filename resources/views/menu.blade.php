@@ -2,7 +2,16 @@
 
 @section('content')
 <div class="container"> 
-    <H3>THESE ARE OUR DISHES TODAY FOR OUR ESTEEM CUSTOMERS</H3>
+   
+  <h4>CHECK OUT TODAYS'S DISHES</h4>
+
+    @if(session('success'))
+    <div class="alert alert-success"><strong>{{session('success')}}</strong> has been added to your cart!!
+            
+        </div>
+    @endif
+
+
     <div class="row"> 
     @foreach($MenuList as $m)
                 
@@ -19,6 +28,8 @@
 
 
             <a href="/menu/{{$m->id}}" class="btn btn-primary">ORDER NOW</a>
+            <a href="/mycart/{{Auth::id()}}" class="btn btn-primary">My Cart</a>
+           
             </div>
             
             </div>

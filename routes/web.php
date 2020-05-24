@@ -35,7 +35,8 @@ Route::get('/menu/{id}', 'menuController@show')->name('menu.show');
 Route::get('/menuedit', 'menuController@editpage')->name('menu.editpage');
 
 //**************************************ROUTES FOR MANAGING THE CART************************************************ */
-Route::post('/addtocart', 'cartController@add')->name('cart');
+Route::post('/addtocart/{id}', 'CartController@addtocart')->name('cart');
+Route::get('/mycart/{id}', 'CartController@index')->name('cart.index');
 
 
 

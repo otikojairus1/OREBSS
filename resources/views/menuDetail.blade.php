@@ -19,7 +19,7 @@
                 @endif --}}
 
                 <div class="card-body">
-                    <form method="POST" action="/addtocart">
+                <form method="POST" action="/addtocart/{{$foodDetail->id}}">
                         @csrf
 
                         <div class="form-group row">

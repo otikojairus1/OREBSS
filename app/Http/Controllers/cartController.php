@@ -1,46 +1,31 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
-
-use Illuminate\Http\Request;
+use App\menu;
+use App\Cart;
 use Illuminate\Support\Facades\Auth;
-use App\order;
-use App\cart;
-use App\Bill;
-class cartController extends Controller
+use Illuminate\Http\Request;
+
+class CartController extends Controller
+
+
 {
+
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function add(Request $request)
+    public function index($id)
     {
-        //add to cart table in db
-
-        // $foodDetail = order::where('foodId', $foodid)->first();
-        $foodDetail = order::where('foodId', $request->id)->first();
-        // dd(Auth::user()->name);
-        $newBill->userid = Auth::user()->id;
-        $newBill->price = 0;
-
-        $newcart->user_id = Auth::user()->id;
-        $newcart->username = Auth::user()->name;
-        $newcart->price = $foodDetail->price;
-        $newcart->description = $foodDetail->description;
-        $newcart->foodId = $foodDetail->foodId;
-        $newcart->foodOrdered = $foodDetail->foodname;
-        $newcart->save();
-        $newBill->save();
-
-
-
-        // dd($foodDetail->foodname);
-        
-
-
-        return redirect('/order')->with('fooddetail',$foodDetail->foodname);
+        $cartDetail = Cart::where('cartOwner', $id)->get();
+        return view('cartopen')->with('cartDetails', $cartDetail);
     }
 
     /**
@@ -70,38 +55,21 @@ class cartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function addtocart($id)
     {
-        $cartContents = cart::where('user_id', $id)->get();
-        
+        $foodOnMenu = menu::findorFail($id);
 
-        $prices = DB::table('carts')->pluck('price');
-            // dd($prices);
-            $oldprice = 0;
+        $foodInCart = new Cart();
 
-        foreach ($prices as $price) {
+        //$foodInCart->id = $foodOnMenu->id;
+        $foodInCart->name = $foodOnMenu->name;
+        $foodInCart->menuDescription = $foodOnMenu->menuDescription;
+        $foodInCart->price = $foodOnMenu->price;
+        $foodInCart->cartOwner = Auth::id();
+        $foodInCart->quantity = $foodOnMenu->quantity;
+        $foodInCart->save();
 
-          $newprize = $oldprice + $price;
-          $oldprice = $newprize;
-          
-      }
-
-        
-        $bill = Bill::where('userid', $id)->get();
-    
-        $bill->user_id = Auth::user()->id;
-        $bill->price = $newprize;
-        
-        //   dd($bill);
-        $bill->save();
-
-        
-
-        return view('cart',[
-            'cartContents' => $cartContents,
-            'bill' => $newprize
-            ]);
-
+        return redirect('/menu')->with('success',$foodInCart->name);
     }
 
     /**
