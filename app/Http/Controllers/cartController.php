@@ -24,8 +24,9 @@ class CartController extends Controller
      */
     public function index($id)
     {
-        $cartDetail = Cart::where('cartOwner', $id)->get();
-        return view('cartopen')->with('cartDetails', $cartDetail);
+        $cartDetails = Cart::where('cartOwner', $id)->get();
+        //dd($cartDetails);
+        return view('cartopen')->with('cartDetails', $cartDetails);
     }
 
     /**

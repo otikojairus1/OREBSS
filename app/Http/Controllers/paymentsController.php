@@ -47,7 +47,7 @@ class paymentsController extends Controller
         $mpesaOnlinePasskey = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";
         date_default_timezone_set('Africa/Nairobi');
         $timestamp =  date('YmdHis');
-        $amount = number_format($request->amount);
+        $amount = $request->amount;
         $dataToEncode = $BusinessShortCode.$mpesaOnlinePasskey.$timestamp;
         //dd($dataToEncode);
         $password = base64_encode($dataToEncode);
@@ -71,9 +71,9 @@ class paymentsController extends Controller
           'Amount' => 1,
           'PartyA' => $partyA,
           'PartyB' => $partyB,
-          'PhoneNumber' => '254796640399',
+          'PhoneNumber' => '254722753364',
           'CallBackURL' => 'https://orebscafe.com/mpesacallback',
-          'AccountReference' => 'OREBS',
+          'AccountReference' => 'OREBS eCAFE',
           'TransactionDesc' => 'PAYING BILLS FOR OREBS'
         );
         

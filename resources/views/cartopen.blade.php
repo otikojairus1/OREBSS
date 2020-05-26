@@ -1,7 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<H3 class="heading m-auto text-center">YOU ARE ABOUT TO ORDER THESE FOOD</H3>
+{{-- @if(session('cartDetails') === null) --}}
+{{-- <H3 class="heading m-auto text-center">YOU HAVE NOTHING IN YOUR CART</H3> --}}
+{{-- @endif
+@if(session('cartDetails')) --}}
+
+
+<H3 class="heading m-auto text-center">MY CART</H3>
+{{-- @endif --}}
+
+{{-- @if(session('cartDetails')) --}}
 @foreach($cartDetails as $cartDetail)
 
 
@@ -21,6 +30,11 @@
 
 @endforeach
 
-<div class="container text-center heading">GRAND TOTAL : {{$cartDetail->price += $cartDetail->price}}</div>
 
+
+
+
+
+
+{{-- @endif --}}
 @endsection

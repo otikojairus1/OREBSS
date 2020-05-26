@@ -86,7 +86,7 @@
           </div>
         </div>
 
-        
+      @can('create', App\Menu::class)
         <div class="col-md-12 my-3">
           <div class="card text-center">
             
@@ -106,6 +106,7 @@
           </div>
 
         </div>
+        @endcan
     </div>
     </div>
   </div>
