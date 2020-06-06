@@ -14,6 +14,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::post('/myCallbackEndpoint', function (Request $request) {
+
+    $new = new App\Transaction();
+        $new->name = 'fk';
+        $new->mpesaReceiptNumber = 'test';
+        $new->phone = 'test';
+        $new->amount = 1;
+       
+        //$new->amount = $request->Body->stkCallback->CallbackMetadata->Item
+        $new->save();
+    return ;
+    //  response()->json([
+    //      'responce'=> $request->attributes
+    //  ]);
+    
 });
+

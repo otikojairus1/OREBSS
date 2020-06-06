@@ -38,7 +38,7 @@ Route::get('/menuedit', 'menuController@editpage')->name('menu.editpage');
 Route::post('/addtocart/{id}', 'CartController@addtocart')->name('cart');
 Route::get('/mycart/{id}', 'CartController@index')->name('cart.index');
 
-
+Route::post('/paymentEndpoint1', 'paymentsController@mpesaResponce');
 
 Route::get('/viewcart/{id}', 'cartController@show')->name('cart');
 //Route::get('/payment/{id}', 'paymentsController@mpesa')->name('pay');

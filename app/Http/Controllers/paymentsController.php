@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\cart;
 use App\Bill;
+use App\Transaction;
 
 use Illuminate\Http\Request;
 
@@ -15,6 +16,18 @@ class paymentsController extends Controller
 
     public function create( ){
         return view('payments');
+    }
+
+    public function mpesaResponce(Request $request){
+        // $new = new App\Transaction();
+        // $new->name = "OTIKO";
+        // $new->mpesaReceiptNumber = "MWF42GS622";
+        // $new->phone = "254722753364";
+        // $new->amount = 3;
+       
+        // //$new->amount = $request->Body->stkCallback->CallbackMetadata->Item
+        // return $new->save();
+        dd($request);
     }
 
     public function pay( Request $request){
@@ -72,7 +85,7 @@ class paymentsController extends Controller
           'PartyA' => $partyA,
           'PartyB' => $partyB,
           'PhoneNumber' => '254722753364',
-          'CallBackURL' => 'https://orebscafe.com/mpesacallback',
+          'CallBackURL' => 'https://dd7a0e998745.ngrok.io/api/myCallbackEndpoint',
           'AccountReference' => 'OREBS eCAFE',
           'TransactionDesc' => 'PAYING BILLS FOR OREBS'
         );
@@ -84,7 +97,7 @@ class paymentsController extends Controller
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
         
         $curl_response = curl_exec($curl);
-        print_r($curl_response);
+       // print_r($curl_response);
         
         dd($curl_response);
 
